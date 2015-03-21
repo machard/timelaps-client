@@ -1,0 +1,63 @@
+{
+  "name": "myapp",
+  "version": "0.0.0",
+  "description": "A React/Flux app generate by RF, powered with Babel",
+  "main": "build/bundle.js",
+  "dependencies": {
+    "flux": "^2.0.1",
+    "flux-store": "^1.1.5",
+    "keymirror": "^0.1.1",
+    "lodash": "^3.5.0",
+    "modularized-normalize-scss": "^3.0.2",
+    "object-assign": "^2.0.0",
+    "quadtree": "^1.0.2",
+    "react": "0.13.1",
+    "react-googlemaps": "git://github.com/shipstar/react-googlemaps.git",
+    "reactify": "^1.1.0",
+    "sockjs-client": "^1.0.0-beta.12",
+    "stompjs": "^2.3.3",
+    "superagent": "^1.1.0"
+  },
+  "devDependencies": {
+    "babel-jest": "*",
+    "babel-loader": "*",
+    "connect": "^3.3.5",
+    "css-loader": "*",
+    "file-loader": "*",
+    "jest-cli": "*",
+    "react-hot-loader": "*",
+    "react-tools": "*",
+    "sass-loader": "*",
+    "style-loader": "*",
+    "superstatic": "^2.1.3",
+    "webpack": "*",
+    "webpack-dev-server": "*"
+  },
+  "scripts": {
+    "build": "webpack",
+    "dev": "webpack-dev-server --colors --inline --port 5003 & node server.js",
+    "test": "jest"
+  },
+  "author": "",
+  "license": "MIT",
+  "jest": {
+    "scriptPreprocessor": "<rootDir>/preprocessor.js",
+    "testFileExtensions": [
+      "js"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "json"
+    ],
+    "globals": {
+      "SCRIPTS": "<rootDir>/src/scripts"
+    },
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "<rootDir>/node_modules/"
+    ],
+    "unmockedModulePathPatterns": [
+      "<rootDir>/node_modules/react"
+    ]
+  }
+}
