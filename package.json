@@ -15,8 +15,7 @@
     "react-googlemaps": "git://github.com/shipstar/react-googlemaps.git",
     "reactify": "^1.1.0",
     "sockjs-client": "^1.0.0-beta.12",
-    "stompjs": "^2.3.3",
-    "superagent": "^1.1.0"
+    "stompjs": "^2.3.3"
   },
   "devDependencies": {
     "babel-jest": "*",
