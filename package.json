@@ -33,7 +33,7 @@
     "webpack-dev-server": "*"
   },
   "scripts": {
-    "build": "webpack",
+    "build": "webpack -p",
     "dev": "webpack-dev-server --colors --inline --port 5003 & node server.js",
     "test": "jest"
   },
