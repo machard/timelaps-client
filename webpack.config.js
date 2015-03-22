@@ -1,7 +1,7 @@
 var webpack = require("webpack");
 
 module.exports = {
-  devtool: "source-map",
+  devtool: process.argv.indexOf("-p") === -1 && "eval",
   entry: {
     app: [
       "./src/scripts/main.js"
