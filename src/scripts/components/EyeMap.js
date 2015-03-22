@@ -14,6 +14,8 @@ const EyeMap = React.createClass({
   componentDidMount () {
     EyeStore.addChangeListener(_.throttle(this.onChangeStore, 200));
     EyesActions.requestEyes();
+
+    this.lookAt = _.debounce(EyesActions.lookAt, 500);
   },
 
   getInitialState () {
@@ -33,6 +35,8 @@ const EyeMap = React.createClass({
           initialDisableDefaultUI
           width={"100%"}
           height={"100%"}
+          minZoom={2}
+          onCenterChange={this.onBoundsChange}
           onBoundsChange={this.onBoundsChange}
         >
           {this.state.medias.map(function(media) {
@@ -51,12 +55,25 @@ const EyeMap = React.createClass({
   onBoundsChange(map) {
     let bounds = map.getBounds();
 
-    EyesActions.lookAt({
+    if ((
+      bounds.getNorthEast().lat() > 85 ||
+      bounds.getSouthWest().lat() < -73
+    )) {
+      map.panTo(this.lastValidCenter);
+      map.setZoom(this.lastValidZoom);
+      return;
+    }
+    
+    this.lastValidCenter = map.getCenter();
+    this.lastValidZoom = map.getZoom();
+
+    this.lookAt({
       minlat : bounds.getSouthWest().lat(),
       minlng : bounds.getSouthWest().lng(),
       maxlat : bounds.getNorthEast().lat(),
       maxlng : bounds.getNorthEast().lng()
     });
+
   },
 
   onChangeStore() {

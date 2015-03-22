@@ -39,6 +39,23 @@ class Eyes {
   lookAt(bbox) {
     let precision, zones, containing;
 
+    if (bbox.minlng > bbox.maxlng) {
+      this.lookAt({
+        minlng : bbox.minlng,
+        maxlng : 180,
+        minlat : bbox.minlat,
+        maxlat : bbox.maxlat
+      });
+      this.lookAt({
+        minlng : -180,
+        maxlng : bbox.maxlng,
+        minlat : bbox.minlat,
+        maxlat : bbox.maxlat
+      });
+
+      return;
+    }
+
     for (precision = 1; precision <= config.quadtreePrecision; precision++) {
       zones = quadtree.envelop(bbox, precision);
 
