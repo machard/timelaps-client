@@ -8,6 +8,17 @@ import _ from "lodash";
 import google from "../utils/google";
 import Media from "./Media";
 
+var copyrightStyle = {
+  position: "absolute",
+  bottom: 20,
+  right: 20,
+  backgroundColor: "#75d9c6",
+  color: "white",
+  padding: 10,
+  boxShadow: "1px 1px 8px 0px #656565",
+  zIndex: 1,
+  textDecoration: "none"
+};
 
 const EyeMap = React.createClass({
 
@@ -29,6 +40,9 @@ const EyeMap = React.createClass({
   render () {
     return (
       <div className={"mapwrapper"}>
+        <a href="http://www.machard.io" target="_blank" style={copyrightStyle}>
+          By http://www.machard.io
+        </a>
         <Map
           initialZoom={3}
           initialCenter={new google.maps.LatLng(40, 0)}
@@ -44,7 +58,7 @@ const EyeMap = React.createClass({
               key={media.data.id}
               mapPane="floatPane"
               position={new google.maps.LatLng(media.position.lat, media.position.lng)}>
-              <Media media={media} width={40} height={40} />
+              <Media media={media} size={60} />
             </OverlayView>;
           })}
         </Map>
