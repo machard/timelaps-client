@@ -27,7 +27,7 @@ const EyeMap = React.createClass({
     EyesActions.requestEyes();
   },
 
-  lookAt :  _.debounce(EyesActions.lookAt, 500),
+  lookAt :  _.debounce(EyesActions.lookAt, 1000),
 
   getInitialState () {
     return {medias : []};
