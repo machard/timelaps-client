@@ -36,7 +36,7 @@ module.exports = {
       },
 
       {
-        test: /\.(html|png)$/,
+        test: /\.(html|png|gif)$/,
         loader: "file?name=[path][name].[ext]&context=./src"
       }
     ]

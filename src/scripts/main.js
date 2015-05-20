@@ -1,5 +1,6 @@
 require("../index.html");
 require("../assets/stylesheets/style.scss");
+require("../assets/tweetcam.gif");
 
 // TODO: Require assets here.
 // require("../assets/product.png");
