@@ -20,6 +20,27 @@ var copyrightStyle = {
   textDecoration: "none"
 };
 
+var shareStyle = {
+  position: "absolute",
+  bottom: 20,
+  left: 20,
+  backgroundColor: "#75d9c6",
+  padding: 10,
+  boxShadow: "1px 1px 8px 0px #656565",
+  zIndex: 1
+};
+
+var fbStyle = {
+  position: "relative",
+  top: -4,
+  marginRight: 10
+};
+
+var twStyle = {
+  position: "relative",
+  top: 2
+};
+
 const EyeMap = React.createClass({
 
   componentDidMount () {
@@ -43,6 +64,13 @@ const EyeMap = React.createClass({
         <a href="http://www.machard.io" target="_blank" style={copyrightStyle}>
           By http://www.machard.io
         </a>
+        <span style={shareStyle}>
+          <div style={twStyle}>
+            <div style={fbStyle} className="fb-like" data-href="https://timelaps.divshot.io" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div>
+          
+            <a href="https://twitter.com/share" className="twitter-share-button" data-url="http://timelaps.divshot.io" data-text="Timelaps : see the the world in realtime through people eyes">Tweet</a>
+          </div>
+        </span>
         <Map
           initialZoom={3}
           initialCenter={new google.maps.LatLng(40, 0)}
