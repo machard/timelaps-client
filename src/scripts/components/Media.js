@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "./Image";
+import EyesActions from "../actions/EyesActions";
 
 function imgStyle(size) {
   return {
@@ -20,13 +21,13 @@ const Media = React.createClass({
 
     switch(this.props.media.type) {
       case "photo" :
-        media = <Image 
+        media = <Image onUnload={this.onUnload} fading={3000}
           style={imgStyle(this.props.size)}
           src={this.props.media.data.media_url} 
         />;
         break;
       case "instagram.com":
-        media = <Image
+        media = <Image onUnload={this.onUnload} fading={3000}
           style={imgStyle(this.props.size)}
           src={this.props.media.data.url + "media/?size=m"} 
         />;
@@ -36,6 +37,10 @@ const Media = React.createClass({
     }
 
     return media;
+  },
+
+  onUnload () {
+    EyesActions.removeMedia(this.props.media);
   }
 
 });
