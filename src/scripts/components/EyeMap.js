@@ -7,6 +7,7 @@ import {Map, OverlayView} from "react-googlemaps";
 import _ from "lodash";
 import google from "../utils/google";
 import Media from "./Media";
+import config from "../constants/config";
 
 var copyrightStyle = {
   position: "absolute",
@@ -41,6 +42,21 @@ var twStyle = {
   top: 2
 };
 
+var suspendedStyle = {
+  position: "absolute",
+  zIndex : 1,
+  height: "auto",
+  width : 300,
+  left : "50%",
+  top : "50%",
+  marginTop : -50,
+  marginLeft : -150,
+  textAlign : "center",
+  backgroundColor : "#75d9c6",
+  padding: 20,
+  color : "white"
+};
+
 const EyeMap = React.createClass({
 
   componentDidMount () {
@@ -61,6 +77,14 @@ const EyeMap = React.createClass({
   render () {
     return (
       <div className={"mapwrapper"}>
+        {
+          config.suspended ? 
+            <div style={suspendedStyle}>
+              Backend is currently suspended because it costs money !
+            </div>
+          :
+            null
+        }
         <a href="http://www.machard.io" target="_blank" style={copyrightStyle}>
           By http://www.machard.io
         </a>
