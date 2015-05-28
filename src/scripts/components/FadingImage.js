@@ -7,7 +7,10 @@ var style = {
   transition : "opacity 0.6s ease"
 };
 
-const Image = React.createClass({
+// needed because we can not use ReactCSSTransitionGroup with gmap's OverlayView
+// because they are not handled by react.
+
+const FadingImage = React.createClass({
 
   getInitialState () {
     return {
@@ -34,4 +37,4 @@ const Image = React.createClass({
 
 });
 
-export default Image;
+export default FadingImage;

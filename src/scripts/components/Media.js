@@ -1,7 +1,7 @@
 "use strict";
 
 import React from "react";
-import Image from "./Image";
+import FadingImage from "./FadingImage";
 import EyesActions from "../actions/EyesActions";
 
 function imgStyle(size) {
@@ -21,17 +21,19 @@ const Media = React.createClass({
 
     switch(this.props.media.type) {
       case "photo" :
-        media = <Image onUnload={this.onUnload} fading={3000}
+        media = <FadingImage onUnload={this.onUnload} fading={3000}
           style={imgStyle(this.props.size)}
           src={this.props.media.data.media_url} 
         />;
         break;
       case "instagram.com":
-        media = <Image onUnload={this.onUnload} fading={3000}
+        media = <FadingImage onUnload={this.onUnload} fading={3000}
           style={imgStyle(this.props.size)}
           src={this.props.media.data.url + "media/?size=m"} 
         />;
         break;
+      // case "video":
+      // case ...
       default :
         media = null;
     }

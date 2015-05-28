@@ -60,7 +60,9 @@ var suspendedStyle = {
 const EyeMap = React.createClass({
 
   componentDidMount () {
-    EyeStore.addChangeListener(_.throttle(this.onChangeStore, 200));
+    this.onSeen = _.throttle(this.onSeenHandler, 200);
+
+    EyeStore.addChangeListener(this.onSeen);
     EyesActions.requestEyes();
   },
 
@@ -71,6 +73,7 @@ const EyeMap = React.createClass({
   },
 
   componentWillUnmount () {
+    EyeStore.removeChangeListener(this.onSeen);
     EyesActions.unrequestEyes();
   },
 
@@ -142,10 +145,10 @@ const EyeMap = React.createClass({
 
   },
 
-  onChangeStore() {
+  onSeenHandler() {
     this.setState({
       medias : EyeStore.getMedias()
-    });
+    }); 
   }
 
 });
