@@ -31,4 +31,4 @@ divshot deploy
 
 #Backend
 
-To set up the backend, refer to this [](http://github.com/machard/timelaps-backend)
+To set up the backend, refer to this [repo](http://github.com/machard/timelaps-backend)
